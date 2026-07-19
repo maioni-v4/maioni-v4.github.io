@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>推し活マネー管理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Money Dashboard</p>
+      <h1>推し活マネー管理</h1>
+      <p>今月あといくら自由に使えるか、1秒で確認するためのシンプル家計アプリです。</p>
+    </header>
+
+    <nav class="tabs" aria-label="画面切り替え">
+      <button class="tab-button active" data-screen="home">ホーム</button>
+      <button class="tab-button" data-screen="input">入力</button>
+      <button class="tab-button" data-screen="settings">設定</button>
+    </nav>
+
+    <main>
+      <section id="home" class="screen active" aria-labelledby="home-title">
+        <div class="dashboard-grid">
+          <article class="card balance-card">
+            <div>
+              <p class="label">今月あといくら使えるか</p>
+              <h2 id="remainingAmount">¥0</h2>
+            </div>
+            <p id="motivationMessage" class="message">まずは設定で予算を登録しましょう！</p>
+          </article>
+
+          <article class="card">
+            <p class="label">今月の推し活投資額</p>
+            <p id="oshiTotal" class="metric">¥0</p>
+          </article>
+
+          <article class="card">
+            <p class="label">今月の総予算</p>
+            <p id="monthlyBudget" class="metric">¥0</p>
+          </article>
+
+          <article class="card">
+            <p class="label">今月の支出合計</p>
+            <p id="spentTotal" class="metric">¥0</p>
+          </article>
+        </div>
+
+        <article class="card history-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Recent</p>
+              <h2 id="home-title">最近の支出</h2>
+            </div>
+            <button id="clearMonthButton" class="ghost-button" type="button">今月の記録をリセット</button>
+          </div>
+          <ul id="expenseList" class="expense-list"></ul>
+          <p id="emptyState" class="empty-state">まだ支出がありません。入力画面からサクッと記録できます。</p>
+        </article>
+      </section>
+
+      <section id="input" class="screen" aria-labelledby="input-title">
+        <article class="card form-card">
+          <p class="eyebrow">Quick Input</p>
+          <h2 id="input-title">支出を1秒で記録</h2>
+          <form id="expenseForm">
+            <label>
+              金額
+              <input id="expenseAmount" type="number" inputmode="numeric" min="1" step="1" placeholder="例：2500" required>
+            </label>
+
+            <fieldset>
+              <legend>カテゴリ</legend>
+              <div class="choice-row">
+                <label class="choice">
+                  <input type="radio" name="category" value="推し活・趣味" checked>
+                  <span>推し活・趣味</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="category" value="その他・日常消費">
+                  <span>その他・日常消費</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              メモ（任意）
+              <input id="expenseMemo" type="text" maxlength="30" placeholder="例：近本タオル、パワプロ">
+            </label>
+
+            <button class="primary-button" type="submit">記録する</button>
+          </form>
+          <p id="inputFeedback" class="feedback" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section id="settings" class="screen" aria-labelledby="settings-title">
+        <article class="card form-card">
+          <p class="eyebrow">Setup</p>
+          <h2 id="settings-title">今月の使えるお金を設定</h2>
+          <p class="description">細かい内訳は不要です。収入と絶対に引かれる固定費だけ入力すると、今月の自由予算を自動計算します。</p>
+
+          <form id="settingsForm">
+            <label>
+              収入（バイト代など）
+              <input id="incomeInput" type="number" inputmode="numeric" min="0" step="1" placeholder="例：90000" required>
+            </label>
+
+            <label>
+              固定費（生活費・貯金など）
+              <input id="fixedCostInput" type="number" inputmode="numeric" min="0" step="1" placeholder="例：50000" required>
+            </label>
+
+            <div class="calculation-box">
+              <span>収入 - 固定費 =</span>
+              <strong id="calculatedBudget">¥0</strong>
+            </div>
+
+            <button class="primary-button" type="submit">設定を保存する</button>
+          </form>
+          <p id="settingsFeedback" class="feedback" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

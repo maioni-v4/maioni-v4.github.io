@@ -1,0 +1,377 @@
+:root {
+  --bg: #fff7ed;
+  --panel: #ffffff;
+  --text: #25170d;
+  --muted: #7a6253;
+  --accent: #ff7a1a;
+  --accent-dark: #d65500;
+  --accent-soft: #ffe1c6;
+  --danger: #dc2626;
+  --success: #15803d;
+  --line: #f2d8c4;
+  --shadow: 0 18px 60px rgba(95, 43, 10, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 186, 111, 0.45), transparent 30rem),
+    linear-gradient(135deg, #fff7ed 0%, #fff1f2 100%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero {
+  padding: 28px;
+  border: 1px solid rgba(255, 122, 26, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -0.06em;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.eyebrow,
+.label {
+  margin: 0;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+}
+
+.tab-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 12px;
+  color: var(--muted);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(255, 122, 26, 0.32);
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.balance-card {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: end;
+  background:
+    linear-gradient(135deg, rgba(255, 122, 26, 0.12), rgba(255, 255, 255, 0.92)),
+    #fff;
+}
+
+.balance-card h2 {
+  margin: 6px 0 0;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  letter-spacing: -0.08em;
+  line-height: 0.95;
+}
+
+.message {
+  margin: 0;
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.message.danger {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.metric {
+  margin: 8px 0 0;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+.history-card {
+  margin-top: 16px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-heading h2,
+.form-card h2 {
+  margin: 4px 0 0;
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: var(--muted);
+  background: #fff;
+  cursor: pointer;
+}
+
+.expense-list {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.expense-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fffaf5;
+}
+
+.expense-title {
+  margin: 0 0 3px;
+  font-weight: 900;
+}
+
+.expense-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.expense-amount {
+  font-weight: 900;
+}
+
+.delete-button {
+  border: 0;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  background: #fee2e2;
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.empty-state,
+.description,
+.feedback {
+  color: var(--muted);
+}
+
+.form-card {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+form {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+label,
+legend {
+  display: grid;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 800;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: #fffaf5;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255, 122, 26, 0.14);
+}
+
+.choice-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.choice input {
+  position: absolute;
+  opacity: 0;
+}
+
+.choice span {
+  display: block;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: #fffaf5;
+  text-align: center;
+  cursor: pointer;
+}
+
+.choice input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.calculation-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+  border-radius: 20px;
+  background: #fffaf5;
+  border: 1px dashed var(--accent);
+}
+
+.calculation-box strong {
+  font-size: 2rem;
+  letter-spacing: -0.06em;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 18px;
+  padding: 17px 20px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #ff3d6e);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(255, 122, 26, 0.26);
+}
+
+.primary-button:active,
+.tab-button:active,
+.ghost-button:active,
+.delete-button:active {
+  transform: translateY(1px);
+}
+
+.feedback.success {
+  color: var(--success);
+  font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100% - 20px, 1040px);
+    padding-top: 16px;
+  }
+
+  .hero,
+  .card {
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .dashboard-grid,
+  .balance-card,
+  .choice-row {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-card {
+    grid-column: span 1;
+  }
+
+  .section-heading,
+  .calculation-box {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .expense-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .expense-amount {
+    grid-column: 1;
+  }
+}
